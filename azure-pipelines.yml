@@ -26,7 +26,7 @@ stages:
   displayName: Production stage
   dependsOn: Build
   jobs:  
-  - job: prod deploy
+  - job: prodDeploy
     displayName: prod deploy
     steps:
     - script: | 
@@ -36,7 +36,7 @@ stages:
   displayName: Production stage
   dependsOn: Build
   jobs:  
-  - job: transient deploy
+  - job: transientDeploy
     displayName: transient deploy
     steps:
     - script: | 
