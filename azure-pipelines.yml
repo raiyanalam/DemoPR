@@ -30,7 +30,7 @@ stages:
     - script: | 
         echo deploying to Production 
         echo Prod deployed
-      displayName: 'deploy script' 
+      displayName: 'deploy script(prod)' 
 - stage: DeployFromPR
   displayName: Production stage
   dependsOn: Build
