@@ -25,6 +25,7 @@ stages:
 - stage: DeployFromMaster
   displayName: Production stage
   dependsOn: Build
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
   jobs:  
   - job: prodDeploy
     displayName: prod deploy
@@ -33,8 +34,9 @@ stages:
         echo deploying to prod environment 
         echo prod env deployed 
 - stage: DeployFromPR
-  displayName: Production stage
+  displayName: Production stage  
   dependsOn: Build
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/pull'))
   jobs:  
   - job: transientDeploy
     displayName: transient deploy
