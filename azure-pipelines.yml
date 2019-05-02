@@ -22,3 +22,17 @@ stages:
     - script: | 
         echo Hello, world !! 
         echo Replace me with your build steps      
+- stage: DeployFromMaster
+  displayName: Production stage
+  dependsOn: Build
+  steps:
+    - script: | 
+        echo deploying to Production 
+        echo Prod deployed      
+- stage: DeployFromPR
+  displayName: Production stage
+  dependsOn: Build
+  steps:
+    - script: | 
+        echo deploying to Transient environment 
+        echo Transient env deployed
