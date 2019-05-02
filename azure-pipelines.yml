@@ -25,14 +25,20 @@ stages:
 - stage: DeployFromMaster
   displayName: Production stage
   dependsOn: Build
-  steps:
+  jobs:  
+  - job: prod deploy
+    displayName: prod deploy
+    steps:
     - script: | 
-        echo deploying to Production 
-        echo Prod deployed      
+        echo deploying to prod environment 
+        echo prod env deployed 
 - stage: DeployFromPR
   displayName: Production stage
   dependsOn: Build
-  steps:
+  jobs:  
+  - job: transient deploy
+    displayName: transient deploy
+    steps:
     - script: | 
-        echo deploying to Transient environment 
-        echo Transient env deployed
+        echo deploying to transient env environment 
+        echo transient env deployed 
