@@ -1,0 +1,46 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pr:
+  branches:
+    include:
+    - master
+    - releases/*
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:  
+  - job: Build
+    displayName: Build job
+    steps:
+    - script: | 
+        echo Hello, world !! 
+        echo Replace me with your build steps
+      displayName: 'Build script'    
+- stage: DeployFromMaster
+  displayName: Production stage
+  dependsOn: Build
+  steps:
+    - script: | 
+        echo deploying to Production 
+        echo Prod deployed
+      displayName: 'deploy script' 
+- stage: DeployFromPR
+  displayName: Production stage
+  dependsOn: Build
+  steps:
+    - script: | 
+        echo deploying to Transient environment 
+        echo Transient env deployed
+      displayName: 'deploy script(transient)' 
+
+
