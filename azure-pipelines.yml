@@ -12,9 +12,6 @@ pr:
     - master
     - releases/*
 
-pool:
-  vmImage: 'Ubuntu-16.04'
-
 stages:
 - stage: Build
   displayName: Build stage
