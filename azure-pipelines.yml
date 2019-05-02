@@ -25,7 +25,7 @@ stages:
     steps:
     - script: | 
         echo Hello, world !! 
-        echo Replace me with your build steps      
+        echo Pr id is $(System.PullRequest.PullRequestId)     
 - stage: DeployFromMaster
   displayName: Production stage
   dependsOn: Build
